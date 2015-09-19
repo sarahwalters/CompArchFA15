@@ -1,0 +1,6 @@
+![Alt](outputs/adder_behavioralWaveform.JPG?raw=true "Title")
+![Alt](outputs/adder_structuralWaveform.JPG?raw=true "Title")
+![Alt](outputs/decoder_behavioralWaveform.JPG?raw=true "Title")
+![Alt](outputs/decoder_structuralWaveform.JPG?raw=true "Title")
+![Alt](outputs/multiplexer_behavioralWaveform.JPG?raw=true "Title")
+![Alt](outputs/multiplexer_structuralWaveform.JPG?raw=true "Title")

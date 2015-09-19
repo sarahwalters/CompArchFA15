@@ -1,0 +1,31 @@
+# vsim 
+# Start time: 14:28:17 on Sep 19,2015
+# Loading work.testDecoder
+# Loading work.behavioralDecoder
+# En A0 A1| O0 O1 O2 O3 | Expected Output
+# 0  0  0 |  0  0  0  0 | All false
+# 0  1  0 |  0  0  0  0 | All false
+# 0  0  1 |  0  0  0  0 | All false
+# 0  1  1 |  0  0  0  0 | All false
+# 1  0  0 |  1  0  0  0 | O0 Only
+# 1  1  0 |  0  1  0  0 | O1 Only
+# 1  0  1 |  0  0  1  0 | O2 Only
+# 1  1  1 |  0  0  0  1 | O3 Only
+# 0 ns
+# 8400 ns
+
+# vsim 
+# Start time: 14:29:02 on Sep 19,2015
+# Loading work.testDecoder
+# Loading work.structuralDecoder
+# En A0 A1| O0 O1 O2 O3 | Expected Output
+# 0  0  0 |  0  0  0  0 | All false
+# 0  1  0 |  0  0  0  0 | All false
+# 0  0  1 |  0  0  0  0 | All false
+# 0  1  1 |  0  0  0  0 | All false
+# 1  0  0 |  1  0  0  0 | O0 Only
+# 1  1  0 |  0  1  0  0 | O1 Only
+# 1  0  1 |  0  0  1  0 | O2 Only
+# 1  1  1 |  0  0  0  1 | O3 Only
+# 0 ns
+# 8400 ns

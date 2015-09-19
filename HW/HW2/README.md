@@ -15,8 +15,11 @@
 ### Waveforms
 Behavioral:
 ![Alt](outputs/adder_behavioralWaveform.JPG?raw=true "Waveform for behavioral adder")
+
 Structural:
 ![Alt](outputs/adder_structuralWaveform.JPG?raw=true "Waveform for structural adder")
+
+<br>
 
 ## Decoder
 ### Test bench results
@@ -34,8 +37,11 @@ Structural:
 ### Waveforms
 Behavioral:
 ![Alt](outputs/decoder_behavioralWaveform.JPG?raw=true "Waveform for behavioral decoder")
+
 Structural:
 ![Alt](outputs/decoder_structuralWaveform.JPG?raw=true "Waveform for structural decoder")
+
+<br>
 
 ## Multiplexer
 ### Test bench results

@@ -1,5 +1,5 @@
 //------------------------------------------------------------------------------
-// Test harness validates hw4testbench by connecting it to various functional 
+// Test harness validates hw4testbench by connecting it to various functional
 // or broken register files, and verifying that it correctly identifies each
 //------------------------------------------------------------------------------
 
@@ -34,15 +34,15 @@ module hw4testbenchharness();
   hw4testbench tester
   (
     .begintest(begintest),
-    .endtest(endtest), 
+    .endtest(endtest),
     .dutpassed(dutpassed),
     .ReadData1(ReadData1),
     .ReadData2(ReadData2),
-    .WriteData(WriteData), 
-    .ReadRegister1(ReadRegister1), 
+    .WriteData(WriteData),
+    .ReadRegister1(ReadRegister1),
     .ReadRegister2(ReadRegister2),
     .WriteRegister(WriteRegister),
-    .RegWrite(RegWrite), 
+    .RegWrite(RegWrite),
     .Clk(Clk)
   );
 
@@ -107,42 +107,42 @@ output reg		Clk
     dutpassed = 1;
     #10
 
-  // Test Case 1: 
-  //   Write '42' to register 2, verify with Read Ports 1 and 2
-  //   (Passes because example register file is hardwired to return 42)
-  WriteRegister = 5'd2;
-  WriteData = 32'd42;
-  RegWrite = 1;
-  ReadRegister1 = 5'd2;
-  ReadRegister2 = 5'd2;
-  #5 Clk=1; #5 Clk=0;	// Generate single clock pulse
+    // Test Case 1:
+    //   Write '42' to register 2, verify with Read Ports 1 and 2
+    //   (Passes because example register file is hardwired to return 42)
+    WriteRegister = 5'd2;
+    WriteData = 32'd42;
+    RegWrite = 1;
+    ReadRegister1 = 5'd2;
+    ReadRegister2 = 5'd2;
+    #5 Clk=1; #5 Clk=0;	// Generate single clock pulse
 
-  // Verify expectations and report test result
-  if((ReadData1 != 42) || (ReadData2 != 42)) begin
-    dutpassed = 0;	// Set to 'false' on failure
-    $display("Test Case 1 Failed");
+    // Verify expectations and report test result
+    if((ReadData1 !== 42) || (ReadData2 !== 42)) begin
+      dutpassed = 0;	// Set to 'false' on failure
+      $display("Test Case 1 Failed");
+    end
+
+    // Test Case 2:
+    //   Write '15' to register 2, verify with Read Ports 1 and 2
+    //   (Fails with example register file, but should pass with yours)
+    WriteRegister = 5'd2;
+    WriteData = 32'd15;
+    RegWrite = 1;
+    ReadRegister1 = 5'd2;
+    ReadRegister2 = 5'd2;
+
+    #5 Clk=1; #5 Clk=0;
+
+    if((ReadData1 !== 15) || (ReadData2 !== 15)) begin
+      dutpassed = 0;
+      $display("Test Case 2 Failed");
+    end
+
+    // All done!  Wait a moment and signal test completion.
+    #5
+    endtest = 1;
+
   end
-
-  // Test Case 2: 
-  //   Write '15' to register 2, verify with Read Ports 1 and 2
-  //   (Fails with example register file, but should pass with yours)
-  WriteRegister = 5'd2;
-  WriteData = 32'd15;
-  RegWrite = 1;
-  ReadRegister1 = 5'd2;
-  ReadRegister2 = 5'd2;
-  #5 Clk=1; #5 Clk=0;
-
-  if((ReadData1 != 15) || (ReadData2 != 15)) begin
-    dutpassed = 0;
-    $display("Test Case 2 Failed");
-  end
-
-
-  // All done!  Wait a moment and signal test completion.
-  #5
-  endtest = 1;
-
-end
 
 endmodule

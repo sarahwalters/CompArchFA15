@@ -67,7 +67,7 @@ module register_testbench;
 
     // Initial condition
     // ...flip clock once to set initial q
-    wrenable_z=1'b1; clk_z=1'b0; #5
+    wrenable_z=1'b1; d_z=32'b0; clk_z=1'b0; #5
     clk_z=1'b1; #5
 
     d_z=32'b1; clk_z=1'b0; #5

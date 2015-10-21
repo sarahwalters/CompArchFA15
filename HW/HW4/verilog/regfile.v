@@ -18,12 +18,6 @@ input		RegWrite,	// Enable writing of register when High
 input		Clk		// Clock (Positive Edge Triggered)
 );
 
-  // These two lines are clearly wrong.  They are included to showcase how the
-  // test harness works. Delete them after you understand the testing process,
-  // and replace them with your actual code.
-  // assign ReadData1 = 42;
-  // assign ReadData2 = 42;
-
   // Generate write enables for all 32 registers
   wire[31:0] decoder_out;
   decoder1to32 d(decoder_out, RegWrite, WriteRegister);

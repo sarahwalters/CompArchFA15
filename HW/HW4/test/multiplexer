@@ -1,0 +1,1 @@
+iverilog -o test/compiled verilog/multiplexer.v verilog/multiplexer.t.v && ./test/compiled

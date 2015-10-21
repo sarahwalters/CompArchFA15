@@ -107,9 +107,8 @@ output reg		Clk
     dutpassed = 1;
     #10
 
-    // Test Case 1:
+    // Test Case 1: Does write/read work?
     //   Write '42' to register 2, verify with Read Ports 1 and 2
-    //   (Passes because example register file is hardwired to return 42)
     WriteRegister = 5'd2;
     WriteData = 32'd42;
     RegWrite = 1;
@@ -123,20 +122,60 @@ output reg		Clk
       $display("Test Case 1 Failed");
     end
 
-    // Test Case 2:
-    //   Write '15' to register 2, verify with Read Ports 1 and 2
-    //   (Fails with example register file, but should pass with yours)
+    // Test Case 2: Does disabling RegWrite work?
+    //   Set RegWrite to 0
+    //   Try to write '300' to register 2
+    //   Verify that '300' wasn't stored with Read Ports 1 and 2
     WriteRegister = 5'd2;
-    WriteData = 32'd15;
-    RegWrite = 1;
+    WriteData = 32'd300;
+    RegWrite = 0;
     ReadRegister1 = 5'd2;
     ReadRegister2 = 5'd2;
 
     #5 Clk=1; #5 Clk=0;
 
-    if((ReadData1 !== 15) || (ReadData2 !== 15)) begin
+    if((ReadData1 === 300) || (ReadData2 === 300)) begin
       dutpassed = 0;
       $display("Test Case 2 Failed");
+    end
+
+    // Test Case 3: Is decoder output one-hot?
+    //   Try to write '2273' to register 2
+    //   Verify that '2273' wasn't stored in two other registers with Read Ports 1 and 2
+    WriteRegister = 5'd2;
+    WriteData = 32'd2273;
+    RegWrite = 0;
+    ReadRegister1 = 5'd1;
+    ReadRegister2 = 5'd21;
+
+    #5 Clk=1; #5 Clk=0;
+
+    if((ReadData1 === 2273) || (ReadData2 === 2273)) begin
+      dutpassed = 0;
+      $display("Test Case 3 Failed");
+    end
+
+    // Test Case 5: Does Port 2 always read register 17?
+    //   Write '2000' to register 2
+    //   Write '17000' to register 17
+    //   Read register 2 -> check that it's not 17000
+    WriteRegister = 5'd2;
+    WriteData = 32'd2000;
+    RegWrite = 1;
+
+    #5 Clk=1; #5 Clk=0;
+
+    WriteRegister = 5'd17;
+    WriteData = 32'd17000;
+    RegWrite = 1;
+    ReadRegister1 = 5'd17;
+    ReadRegister2 = 5'd2;
+
+    #5 Clk=1; #5 Clk=0;
+
+    if((ReadData2 === 17000)) begin
+      dutpassed = 0;
+      $display("Test Case 5 Failed");
     end
 
     // All done!  Wait a moment and signal test completion.

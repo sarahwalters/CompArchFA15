@@ -1,0 +1,1 @@
+iverilog -o test/compiled verilog/decoders.v verilog/decoders.t.v && ./test/compiled

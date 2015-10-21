@@ -16,6 +16,7 @@ module register_testbench;
     $display(" ");
     $display("Initial conditions");
     $display(" wrenable  clk                d                  |                 q                  |             expected q");
+
     wrenable=1'b1; d=32'b0; clk=1'b0; #5
     clk=1'b1; #5 // trigger first clk posedge
     clk=1'b0; #5

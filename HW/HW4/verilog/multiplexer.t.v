@@ -17,16 +17,17 @@ module multiplexer_testbench;
     $display(" ");
     $display("32 to 1x1 mux");
     $display("  addr   inputs                            | out | expected out");
-    address=4'b0000; inputs=32'b1; #1000
+
+    address=5'b00000; inputs=32'b1; #1000
     $display("  %b  %b  |  %b  |  %b", address, inputs, out, 1'b1);
 
-    address=4'b0100; inputs=32'b1; #1000
+    address=5'b00100; inputs=32'b1; #1000
     $display("  %b  %b  |  %b  |  %b", address, inputs, out, 1'b0);
 
-    address=4'b0001; inputs=32'b10; #1000
+    address=5'b00001; inputs=32'b10; #1000
     $display("  %b  %b  |  %b  |  %b", address, inputs, out, 1'b1);
 
-    address=4'b0100; inputs=32'b10; #1000
+    address=5'b00100; inputs=32'b10; #1000
     $display("  %b  %b  |  %b  |  %b", address, inputs, out, 1'b0);
 
     $display(" ");
@@ -38,17 +39,17 @@ module multiplexer_testbench;
       inputs_32[i] = 32'b0;
     end
 
-    address_32=4'b0000; inputs_32[0]=32'b1; #1000
+    address_32=5'b00000; inputs_32[0]=32'b1; #1000
     $display("  %b | %b | %b", address_32, out_32, 32'b1);
 
-    address_32=4'b0100; #1000
+    address_32=5'b00100; #1000
     $display("  %b | %b | %b", address_32, out_32, 32'b0);
 
     inputs_32[0]=32'b0;
-    address_32=4'b0001; inputs_32[1]=32'b1; #1000
+    address_32=5'b00001; inputs_32[1]=32'b1; #1000
     $display("  %b | %b | %b", address_32, out_32, 32'b1);
 
-    address_32=4'b0100; #1000
+    address_32=5'b00100; #1000
     $display("  %b | %b | %b", address_32, out_32, 32'b0);
 
     $display(" ");

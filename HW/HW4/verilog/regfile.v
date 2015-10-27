@@ -26,7 +26,7 @@ input		Clk		// Clock (Positive Edge Triggered)
   wire[31:0] reg_outputs[31:0]; // Create a 2D array of wires
 
   // ...make the first register (always 0)
-  register32zero r0(reg_outputs[0], WriteData, decoder_out[0], Clk);
+  register32zero r0(reg_outputs[0], decoder_out[0], Clk);
 
   // ...make the remaining 31 registers
   genvar i;

@@ -22,7 +22,6 @@ endmodule
 module register32zero
 (
 output reg[width-1:0] q,
-input[width-1:0]  d,
 input wrenable,
 input clk
 );
@@ -31,7 +30,7 @@ input clk
   integer i;
   always @(posedge clk) begin
     for (i = 0; i < width; i = i + 1) begin
-      q[i] = d[i];
+      q[i] = 0;
     end
   end
 

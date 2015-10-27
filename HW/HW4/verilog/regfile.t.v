@@ -107,6 +107,7 @@ output reg		Clk
     dutpassed = 1;
     #10
 
+
     // Test Case 1: Does write/read work?
     //   Write '42' to register 2, verify with Read Ports 1 and 2
     WriteRegister = 5'd2;
@@ -121,6 +122,7 @@ output reg		Clk
       dutpassed = 0;	// Set to 'false' on failure
       $display("Test Case 1 Failed");
     end
+
 
     // Test Case 2: Does disabling RegWrite work?
     //   Set RegWrite to 0
@@ -139,6 +141,7 @@ output reg		Clk
       $display("Test Case 2 Failed");
     end
 
+
     // Test Case 3: Is decoder output one-hot?
     //   Try to write '2273' to register 2
     //   Verify that '2273' wasn't stored in two other registers with Read Ports 1 and 2
@@ -154,6 +157,23 @@ output reg		Clk
       dutpassed = 0;
       $display("Test Case 3 Failed");
     end
+
+
+    // Test Case 4: Is register zero actually a register instead of constant zero?
+    //   Try to write '7234' to register 0
+    //   Verify that register 0 reads 0
+    WriteRegister = 5'd0;
+    WriteData = 32'd7234;
+    RegWrite = 1;
+    ReadRegister1 = 5'd0;
+
+    #5 Clk=1; #5 Clk=0;
+
+    if((ReadData1 !== 0)) begin
+      dutpassed = 0;
+      $display("Test Case 4 Failed");
+    end
+
 
     // Test Case 5: Does Port 2 always read register 17?
     //   Write '2000' to register 2

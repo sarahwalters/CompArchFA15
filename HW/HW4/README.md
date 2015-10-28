@@ -1,3 +1,10 @@
+# TO RUN TESTS:
+Required: Icarus Verilog (<a href=http://iverilog.wikia.com/wiki/Installation_Guide target=_blank>Installation instructions here</a>)  
+
+Run all tests with `./test/all` from HW4 directory.  
+Run regfile tests with `./test/regfile` from HW4 directory.  
+(scripts in `./test` are analogous to ModelSim `.do` files)
+
 # CompArch HW b0100: Register File #
 
 **Due:** Wednesday, October 28 at 5pm

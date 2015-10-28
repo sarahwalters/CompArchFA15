@@ -8,14 +8,14 @@
 
 module regfile
 (
-output[31:0]	ReadData1,	// Contents of first register read
-output[31:0]	ReadData2,	// Contents of second register read
-input[31:0]	WriteData,	// Contents to write to register
-input[4:0]	ReadRegister1,	// Address of first register to read
-input[4:0]	ReadRegister2,	// Address of second register to read
-input[4:0]	WriteRegister,	// Address of register to write
-input		RegWrite,	// Enable writing of register when High
-input		Clk		// Clock (Positive Edge Triggered)
+output[31:0]	ReadData1,	   // Contents of first register read
+output[31:0]	ReadData2,	   // Contents of second register read
+input[31:0]	  WriteData,	   // Contents to write to register
+input[4:0]	  ReadRegister1, // Address of first register to read
+input[4:0]	  ReadRegister2, // Address of second register to read
+input[4:0]	  WriteRegister, // Address of register to write
+input		      RegWrite,	     // Enable writing of register when High
+input		      Clk		         // Clock (Positive Edge Triggered)
 );
 
   // Generate write enables for all 32 registers
@@ -26,7 +26,7 @@ input		Clk		// Clock (Positive Edge Triggered)
   wire[31:0] reg_outputs[31:0]; // Create a 2D array of wires
 
   // ...make the first register (always 0)
-  register32zero r0(reg_outputs[0], decoder_out[0], Clk);
+  register32zero r0(reg_outputs[0], 32'b0, decoder_out[0], Clk);
 
   // ...make the remaining 31 registers
   genvar i;

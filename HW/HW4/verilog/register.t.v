@@ -7,8 +7,9 @@ module register_testbench;
 
   // Zero register
   wire[31:0] q_z;
+  reg[31:0] d_z;
   reg wrenable_z, clk_z;
-  register32zero r_z(q_z, wrenable_z, clk_z);
+  register32zero r_z(q_z, d_z, wrenable_z, clk_z);
 
   reg dutspassed;
 

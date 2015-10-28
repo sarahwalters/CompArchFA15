@@ -120,7 +120,7 @@ output reg		Clk
     // Verify expectations and report test result
     if((ReadData1 !== 42) || (ReadData2 !== 42)) begin
       dutpassed = 0;	// Set to 'false' on failure
-      $display("Test Case 1 Failed");
+      $display(" - Regfile: Test Case 1 Failed");
     end
 
 
@@ -138,7 +138,7 @@ output reg		Clk
 
     if((ReadData1 === 300) || (ReadData2 === 300)) begin
       dutpassed = 0;
-      $display("Test Case 2 Failed");
+      $display(" - Regfile: Test Case 2 Failed");
     end
 
 
@@ -155,7 +155,7 @@ output reg		Clk
 
     if((ReadData1 === 2273) || (ReadData2 === 2273)) begin
       dutpassed = 0;
-      $display("Test Case 3 Failed");
+      $display(" - Regfile: Test Case 3 Failed");
     end
 
 
@@ -171,7 +171,7 @@ output reg		Clk
 
     if((ReadData1 !== 0)) begin
       dutpassed = 0;
-      $display("Test Case 4 Failed");
+      $display(" - Regfile: Test Case 4 Failed");
     end
 
 
@@ -195,7 +195,7 @@ output reg		Clk
 
     if((ReadData2 === 17000)) begin
       dutpassed = 0;
-      $display("Test Case 5 Failed");
+      $display(" - Regfile: Test Case 5 Failed");
     end
 
     // All done!  Wait a moment and signal test completion.

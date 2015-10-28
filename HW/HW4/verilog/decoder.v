@@ -8,8 +8,8 @@ input		enable,
 input[4:0]	address
 );
 
-    // << operator left-shifts enable by address bits
-    // output is 32 bits long, so the result gets left-padded with zeros
+    // The `<<` operator left-shifts enable by address bits
+    // out is 32 bits long, so the result of the << operation gets left-padded with zeros
     // so: out is 32'b0 when enable is 0
     //     out is 32'b0 but with a 1 in the address-th bit when enable is 1
     assign out = enable<<address;
